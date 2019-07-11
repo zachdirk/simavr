@@ -80,8 +80,8 @@ sig_int(
 	exit(0);
 }
 
-int
-main(
+avr_t*
+run_avr_main(
 		int argc,
 		char *argv[])
 {
@@ -282,11 +282,5 @@ main(
 	signal(SIGINT, sig_int);
 	signal(SIGTERM, sig_int);
 
-	for (;;) {
-		int state = avr_run(avr);
-		if (state == cpu_Done || state == cpu_Crashed)
-			break;
-	}
-
-	avr_terminate(avr);
+	return avr;
 }

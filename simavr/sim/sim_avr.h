@@ -41,6 +41,8 @@ extern "C" {
 #include "sim_cmds.h"
 #include "sim_cycle_timers.h"
 
+uint32_t opcodes[100];
+
 typedef uint32_t avr_flashaddr_t;
 
 struct avr_t;
@@ -480,6 +482,8 @@ avr_pending_sleep_usec(
 uint64_t
 avr_get_time_stamp(
 		avr_t * avr );
+
+avr_t* run_avr_main(int argc, char *argv[]);
 
 #ifdef __cplusplus
 };

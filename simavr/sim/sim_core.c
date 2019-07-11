@@ -639,8 +639,9 @@ run_one_again:
 		crash(avr);
 		return 0;
 	}
-
+	static int i = 0;
 	uint32_t		opcode = _avr_flash_read16le(avr, avr->pc);
+	opcodes[i++] = opcode;
 	avr_flashaddr_t	new_pc = avr->pc + 2;	// future "default" pc
 	int 			cycle = 1;
 
@@ -1436,6 +1437,5 @@ run_one_again:
 		avr->pc = new_pc;
 		goto run_one_again;
 	}
-
 	return new_pc;
 }
